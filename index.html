@@ -955,6 +955,432 @@
     .attribution a:hover { text-decoration: underline; }
 
     .muted-cell { color: var(--muted); font-size: 12.5px; }
+
+    /* ── Messages page ──────────────────────────────────── */
+
+    #page-messages {
+      margin: -32px;
+      height: calc(100dvh - var(--nav-h));
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .msg-layout {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* Thread list (left) */
+    .msg-threads {
+      width: 320px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .threads-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 20px 16px;
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .threads-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .threads-count {
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--red-soft);
+      color: var(--red);
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    .thread-list {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .msg-thread-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      transition: background 150ms ease;
+    }
+
+    .msg-thread-item:hover { background: var(--bg); }
+    .msg-thread-item.active { background: var(--red-soft); }
+    .msg-thread-item:last-child { border-bottom: none; }
+
+    .thread-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .thread-body { flex: 1; min-width: 0; }
+
+    .thread-name-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .thread-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .thread-time {
+      font-size: 11px;
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    .thread-email {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .thread-cid {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+      background: var(--bg);
+      color: var(--muted);
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      border: 1px solid var(--border);
+    }
+
+    .thread-preview-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .thread-preview {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .thread-unread .thread-preview { color: var(--text); font-weight: 500; }
+
+    .new-badge {
+      background: var(--red);
+      color: #fff;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Conversation view (right) */
+    .msg-convo {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-width: 0;
+      background: var(--bg);
+    }
+
+    .convo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .convo-contact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .convo-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .convo-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .convo-meta {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .meta-dot { opacity: 0.4; }
+
+    .convo-search-btn {
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 150ms ease, color 150ms ease;
+      flex-shrink: 0;
+    }
+
+    .convo-search-btn:hover { background: var(--bg); color: var(--text); }
+
+    .convo-search-btn svg {
+      width: 17px;
+      height: 17px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .convo-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 24px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .msg-row.sent { flex-direction: row-reverse; }
+
+    .msg-bubble-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      align-self: flex-end;
+    }
+
+    .msg-bubble-wrap { display: flex; flex-direction: column; max-width: 68%; }
+
+    .msg-row.sent .msg-bubble-wrap { align-items: flex-end; }
+
+    .msg-bubble {
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      word-break: break-word;
+    }
+
+    .msg-row.sent .msg-bubble {
+      background: var(--red);
+      color: #fff;
+      border-color: transparent;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg-row.received .msg-bubble { border-bottom-left-radius: 4px; }
+
+    .msg-time {
+      font-size: 10.5px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Composer */
+    .msg-composer {
+      flex-shrink: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .compose-formats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 12px 16px 0;
+    }
+
+    .format-toggle {
+      padding: 4px 12px;
+      border-radius: 16px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+    }
+
+    .format-toggle:hover { color: var(--text); border-color: var(--text); }
+
+    .format-toggle.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .compose-area {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      padding: 10px 16px 16px;
+    }
+
+    .compose-toolbar {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .compose-tool-btn {
+      width: 30px;
+      height: 30px;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 150ms ease, color 150ms ease;
+    }
+
+    .compose-tool-btn:hover { background: var(--bg); color: var(--text); }
+
+    .compose-tool-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .compose-input {
+      flex: 1;
+      min-height: 58px;
+      max-height: 120px;
+      overflow-y: auto;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+      outline: none;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+    }
+
+    .compose-input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(230, 48, 39, 0.09);
+    }
+
+    .compose-input:empty::before {
+      content: attr(placeholder);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .send-btn {
+      height: 40px;
+      padding: 0 20px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background 150ms ease;
+      flex-shrink: 0;
+    }
+
+    .send-btn:hover { background: #cc2920; }
   </style>
 </head>
 <body>
@@ -1243,6 +1669,74 @@
       </div>
     </div><!-- #page-tickets -->
 
+    <!-- Messages page -->
+    <div id="page-messages" class="page">
+      <div class="msg-layout">
+
+        <!-- Left: thread list -->
+        <div class="msg-threads">
+          <div class="threads-header">
+            <h2 class="threads-title">Messages</h2>
+            <span class="threads-count" id="threadsCount">6</span>
+          </div>
+          <div class="thread-list" id="threadList"></div>
+        </div>
+
+        <!-- Right: conversation -->
+        <div class="msg-convo">
+          <div class="convo-header">
+            <div class="convo-contact">
+              <div class="convo-avatar" id="convoAvatar"></div>
+              <div>
+                <div class="convo-name" id="convoName"></div>
+                <div class="convo-meta">
+                  <span id="convoEmail"></span>
+                  <span class="meta-dot">·</span>
+                  <span id="convoPhone"></span>
+                </div>
+              </div>
+            </div>
+            <button class="convo-search-btn" aria-label="Search conversation">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+          </div>
+
+          <div class="convo-messages" id="convoMessages"></div>
+
+          <div class="msg-composer">
+            <div class="compose-formats">
+              <button class="format-toggle" data-fmt="sms">Send by text message</button>
+              <button class="format-toggle" data-fmt="email">Send by email</button>
+              <button class="format-toggle" data-fmt="push">Send by push notifications</button>
+              <button class="format-toggle active" data-fmt="all">Send in all formats</button>
+            </div>
+            <div class="compose-area">
+              <div class="compose-toolbar">
+                <button class="compose-tool-btn" data-cmd="bold" aria-label="Bold">
+                  <svg viewBox="0 0 24 24"><path d="M6 4h8a4 4 0 010 8H6z"/><path d="M6 12h9a4 4 0 010 8H6z"/></svg>
+                </button>
+                <button class="compose-tool-btn" data-cmd="italic" aria-label="Italic">
+                  <svg viewBox="0 0 24 24"><line x1="19" y1="4" x2="10" y2="4"/><line x1="14" y1="20" x2="5" y2="20"/><line x1="15" y1="4" x2="9" y2="20"/></svg>
+                </button>
+                <button class="compose-tool-btn" data-cmd="insertUnorderedList" aria-label="Bullet list">
+                  <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1.2"/><circle cx="3" cy="12" r="1.2"/><circle cx="3" cy="18" r="1.2"/></svg>
+                </button>
+              </div>
+              <div class="compose-input"
+                   id="composeInput"
+                   contenteditable="true"
+                   placeholder="Type a message…"
+                   role="textbox"
+                   aria-multiline="true"
+                   aria-label="Message input"></div>
+              <button class="send-btn" id="sendBtn" aria-label="Send message">SEND</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- #page-messages -->
+
   </main>
 
   <!-- Panel overlay -->
@@ -1441,7 +1935,8 @@
     const PAGE_MAP = {
       Dashboard: 'page-dashboard',
       Orders:    'page-orders',
-      Tickets:   'page-tickets'
+      Tickets:   'page-tickets',
+      Messages:  'page-messages'
     };
 
     function showPage(name) {
@@ -1549,6 +2044,166 @@
     }
 
     renderTickets();
+
+    // ── Messages data ──────────────────────────────────────
+    const THREADS = [
+      { id: 't1', name: 'James Hargreaves', email: 'james.h@email.com', phone: '+44 7911 123456', customerId: 'C2355BGF', initials: 'JH', avatarColor: '#7C3AED', preview: "Hi, I placed an order 30 mins ago and it still shows Pending...", time: '5:04 pm',    unread: true  },
+      { id: 't2', name: 'Priya Sharma',     email: 'priya.s@email.com',  phone: '+44 7900 234567', customerId: 'C1892KLM', initials: 'PS', avatarColor: '#0891B2', preview: "I received the wrong item in my order — got a plain burger instead...", time: '4:31 pm', unread: true  },
+      { id: 't3', name: 'Tom Whitfield',    email: 'tom.w@email.com',    phone: '+44 7922 345678', customerId: 'C4401TWX', initials: 'TW', avatarColor: '#059669', preview: "Thanks for sorting that out so quickly. Really appreciate it!",  time: '3:18 pm',    unread: false },
+      { id: 't4', name: 'Amara Osei',       email: 'amara.o@email.com',  phone: '+44 7933 456789', customerId: 'C3307AOY', initials: 'AO', avatarColor: '#D97706', preview: "My refund hasn't come through yet, it's been 5 days now...",    time: 'Yesterday',  unread: false },
+      { id: 't5', name: 'Carlos Mendez',    email: 'carlos.m@email.com', phone: '+44 7944 567890', customerId: 'C5512CMR', initials: 'CM', avatarColor: '#E63027', preview: "The app keeps crashing whenever I try to add my card details.",  time: 'Yesterday',  unread: true  },
+      { id: 't6', name: 'Fatima Al-Hassan', email: 'fatima.a@email.com', phone: '+44 7955 678901', customerId: 'C6623FAH', initials: 'FA', avatarColor: '#7C3AED', preview: "Is it possible to change my delivery time to 7pm instead?",     time: '2 days ago', unread: false }
+    ];
+
+    const CONVERSATIONS = {
+      t1: [
+        { from: 'customer', text: "Hi, I placed an order 30 minutes ago and it still shows as Pending. Order ID is ORD-7842. Is everything okay?", time: '4:52 pm' },
+        { from: 'agent',    text: "Hi James! Thanks for reaching out. Let me take a look at your order right now.", time: '4:54 pm' },
+        { from: 'agent',    text: "I can see ORD-7842 — the restaurant is slightly delayed due to a busy period. Your order is being prepared and will be picked up shortly. Estimated delivery is around 5:15 pm.", time: '4:55 pm' },
+        { from: 'customer', text: "Okay, that's a bit later than expected but thanks for the update. Will the driver track in the app?", time: '4:58 pm' },
+        { from: 'agent',    text: "Yes! Once the driver picks up your order you'll get a live tracking link in the app. You'll also get a push notification when they're 5 minutes away.", time: '5:01 pm' },
+        { from: 'customer', text: "Great, thanks! One more thing — the delivery address on the order might be wrong. I moved recently.", time: '5:04 pm' }
+      ],
+      t2: [
+        { from: 'customer', text: "Hi there, I received the wrong item in my order. I ordered the Margherita XL but got a plain burger instead. Pretty disappointed.", time: '4:10 pm' },
+        { from: 'agent',    text: "Hi Priya, I'm really sorry to hear that! That's not the experience we want for you. Can you confirm your order ID so I can look into this?", time: '4:15 pm' },
+        { from: 'customer', text: "It's ORD-7842. I have a photo if that helps.", time: '4:17 pm' },
+        { from: 'agent',    text: "Yes please, a photo would be very helpful. In the meantime I've flagged this with the restaurant. We'll either arrange a replacement or issue a full refund — whichever you prefer.", time: '4:20 pm' },
+        { from: 'customer', text: "A replacement would be great if it's not too much hassle. I'm quite hungry!", time: '4:22 pm' },
+        { from: 'agent',    text: "Of course! I've raised a priority re-order with the restaurant. ETA is approximately 25 minutes. I've also added a £5 credit to your account for the inconvenience.", time: '4:31 pm' }
+      ],
+      t3: [
+        { from: 'customer', text: "Hi, I just wanted to check on my order ORD-7843. I had the grilled halloumi salad and it arrived cold.", time: '2:55 pm' },
+        { from: 'agent',    text: "Hi Tom, I'm really sorry the food arrived cold — that's not acceptable. I'll raise this with the driver and restaurant right away.", time: '3:00 pm' },
+        { from: 'agent',    text: "I've processed a 50% refund to your original payment method. It should appear within 3–5 working days.", time: '3:02 pm' },
+        { from: 'customer', text: "Oh that's very generous, thank you. That was faster than I expected!", time: '3:10 pm' },
+        { from: 'agent',    text: "We really appreciate your patience Tom. Is there anything else I can help with?", time: '3:12 pm' },
+        { from: 'customer', text: "Thanks for sorting that out so quickly. Really appreciate it!", time: '3:18 pm' }
+      ],
+      t4: [
+        { from: 'customer', text: "Hello, I cancelled order ORD-7844 five days ago and I still haven't received my refund of £16.75. Can you check?", time: 'Yesterday 10:02 am' },
+        { from: 'agent',    text: "Hi Amara, I'm sorry for the delay. Let me look into your refund status right now.", time: 'Yesterday 10:08 am' },
+        { from: 'agent',    text: "The refund was initiated on our end. Unfortunately there's been a processing delay with your bank. It should clear within the next 1–2 business days.", time: 'Yesterday 10:10 am' },
+        { from: 'customer', text: "My refund hasn't come through yet, it's been 5 days now. This is getting frustrating.", time: 'Yesterday 2:30 pm' }
+      ],
+      t5: [
+        { from: 'customer', text: "The app keeps crashing whenever I try to add my card details on the payment screen. I'm on iPhone 15 Pro, latest iOS.", time: 'Yesterday 3:45 pm' },
+        { from: 'agent',    text: "Hi Carlos, thanks for letting us know! That's a bug we weren't aware of. Could you tell me which version of the app you're on? You can find this in Settings > About.", time: 'Yesterday 3:50 pm' },
+        { from: 'customer', text: "The app keeps crashing whenever I try to add my card details.", time: 'Yesterday 4:00 pm' }
+      ],
+      t6: [
+        { from: 'customer', text: "Hi, is it possible to change my delivery time to 7pm instead? I won't be home until then.", time: '2 days ago' },
+        { from: 'agent',    text: "Hi Fatima! Unfortunately once an order is confirmed we can't change the delivery time as the restaurant starts preparation immediately.", time: '2 days ago' },
+        { from: 'agent',    text: "However, if you haven't placed the order yet, you can use the 'Schedule for later' option on the checkout screen to pick a specific time slot.", time: '2 days ago' },
+        { from: 'customer', text: "Is it possible to change my delivery time to 7pm instead?", time: '2 days ago' }
+      ]
+    };
+
+    let activeThreadId = 't1';
+
+    function renderThreadList() {
+      const list = document.getElementById('threadList');
+      if (!list) return;
+      list.innerHTML = THREADS.map(t => `
+        <div class="msg-thread-item${t.unread ? ' thread-unread' : ''}${t.id === activeThreadId ? ' active' : ''}"
+             data-thread="${t.id}" tabindex="0" role="button" aria-label="Conversation with ${t.name}">
+          <div class="thread-avatar" style="background:${t.avatarColor}">${t.initials}</div>
+          <div class="thread-body">
+            <div class="thread-name-row">
+              <span class="thread-name">${t.name}</span>
+              <span class="thread-time">${t.time}</span>
+            </div>
+            <div class="thread-email">${t.email}</div>
+            <div class="thread-cid">${t.customerId}</div>
+            <div class="thread-preview-row">
+              <span class="thread-preview">${t.preview}</span>
+              ${t.unread ? '<span class="new-badge">New</span>' : ''}
+            </div>
+          </div>
+        </div>`).join('');
+
+      list.querySelectorAll('.msg-thread-item').forEach(item => {
+        const open = () => loadThread(item.dataset.thread);
+        item.addEventListener('click', open);
+        item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      });
+    }
+
+    function loadThread(threadId) {
+      activeThreadId = threadId;
+      const t = THREADS.find(x => x.id === threadId);
+      if (!t) return;
+      t.unread = false;
+
+      // Re-render thread list to update highlights and remove New badges
+      renderThreadList();
+
+      // Update header
+      const avatar = document.getElementById('convoAvatar');
+      avatar.textContent = t.initials;
+      avatar.style.background = t.avatarColor;
+      document.getElementById('convoName').textContent  = t.name;
+      document.getElementById('convoEmail').textContent = t.email;
+      document.getElementById('convoPhone').textContent = t.phone;
+
+      // Render messages
+      const msgs = CONVERSATIONS[threadId] || [];
+      const box  = document.getElementById('convoMessages');
+      if (!box) return;
+      box.innerHTML = msgs.map(m => {
+        const sent = m.from === 'agent';
+        return `<div class="msg-row ${sent ? 'sent' : 'received'}">
+          ${!sent ? `<div class="msg-bubble-avatar" style="background:${t.avatarColor}">${t.initials}</div>` : ''}
+          <div class="msg-bubble-wrap">
+            <div class="msg-bubble">${m.text}</div>
+            <div class="msg-time">${m.time}</div>
+          </div>
+        </div>`;
+      }).join('');
+      box.scrollTop = box.scrollHeight;
+    }
+
+    // Format toggles
+    document.querySelectorAll('.format-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.format-toggle').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Compose toolbar (Bold / Italic / List)
+    document.querySelectorAll('.compose-tool-btn').forEach(btn => {
+      btn.addEventListener('mousedown', e => {
+        e.preventDefault();
+        document.getElementById('composeInput')?.focus();
+        document.execCommand(btn.dataset.cmd, false, null);
+      });
+    });
+
+    // Send button
+    document.getElementById('sendBtn')?.addEventListener('click', () => {
+      const input = document.getElementById('composeInput');
+      const text  = input.innerText.trim();
+      if (!text) return;
+      if (!CONVERSATIONS[activeThreadId]) CONVERSATIONS[activeThreadId] = [];
+      CONVERSATIONS[activeThreadId].push({ from: 'agent', text, time: 'Just now' });
+      input.textContent = '';
+      // Update thread preview
+      const t = THREADS.find(x => x.id === activeThreadId);
+      if (t) t.preview = text;
+      loadThread(activeThreadId);
+    });
+
+    // Shift+Enter = newline, Enter alone = send
+    document.getElementById('composeInput')?.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        document.getElementById('sendBtn')?.click();
+      }
+    });
+
+    renderThreadList();
+    loadThread('t1');
   </script>
 
 </body>
