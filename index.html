@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Delivermeat Admin</title>
+  <title>Delivermeat — Admin Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -108,7 +108,7 @@
       border: none;
       background: transparent;
       color: var(--muted);
-      transition: background 130ms ease, color 130ms ease;
+      transition: background 150ms ease, color 150ms ease;
     }
 
     .nav-item:hover {
@@ -211,7 +211,7 @@
       font-size: 13px;
       color: var(--text);
       outline: none;
-      transition: border-color 130ms ease, box-shadow 130ms ease, background 130ms ease;
+      transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
       appearance: none;
     }
 
@@ -247,7 +247,7 @@
       border-radius: 8px;
       color: var(--muted);
       cursor: pointer;
-      transition: background 130ms ease, color 130ms ease;
+      transition: background 150ms ease, color 150ms ease;
       position: relative;
     }
 
@@ -292,7 +292,7 @@
       padding: 4px 8px 4px 4px;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 130ms ease;
+      transition: background 150ms ease;
       user-select: none;
     }
 
@@ -511,7 +511,7 @@
       font-weight: 500;
       color: var(--muted);
       cursor: pointer;
-      transition: color 130ms ease;
+      transition: color 150ms ease;
       white-space: nowrap;
     }
 
@@ -546,7 +546,7 @@
     .orders-table tbody tr {
       border-bottom: 1px solid var(--border);
       cursor: pointer;
-      transition: background 110ms ease;
+      transition: background 150ms ease;
     }
 
     .orders-table tbody tr:last-child { border-bottom: none; }
@@ -650,7 +650,7 @@
       font-weight: 500;
       color: var(--muted);
       cursor: pointer;
-      transition: background 130ms ease, color 130ms ease, border-color 130ms ease;
+      transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
     }
 
     .chip:hover { color: var(--text); border-color: var(--text); }
@@ -766,7 +766,7 @@
       justify-content: center;
       cursor: pointer;
       color: var(--muted);
-      transition: background 130ms ease, color 130ms ease;
+      transition: background 150ms ease, color 150ms ease;
       flex-shrink: 0;
     }
 
@@ -835,7 +835,7 @@
       font-size: 12.5px;
       font-weight: 600;
       cursor: pointer;
-      transition: background 130ms ease, color 130ms ease, border-color 130ms ease;
+      transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
       color: var(--text);
     }
 
@@ -890,6 +890,71 @@
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
+
+    /* ── Ticket category badges ──────────────────────────── */
+    .cat-bug       { background: #FEE2E2; color: #B91C1C; }
+    .cat-support   { background: #EDE9FE; color: #7C3AED; }
+    .cat-questions { background: #DBEAFE; color: #1D4ED8; }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .cat-bug       { background: rgba(185,28,28,0.15);  color: #FCA5A5; }
+      :root:not([data-theme="light"]) .cat-support   { background: rgba(124,58,237,0.15); color: #C4B5FD; }
+      :root:not([data-theme="light"]) .cat-questions { background: rgba(29,78,216,0.15);  color: #93C5FD; }
+    }
+
+    :root[data-theme="dark"] .cat-bug       { background: rgba(185,28,28,0.15);  color: #FCA5A5; }
+    :root[data-theme="dark"] .cat-support   { background: rgba(124,58,237,0.15); color: #C4B5FD; }
+    :root[data-theme="dark"] .cat-questions { background: rgba(29,78,216,0.15);  color: #93C5FD; }
+
+    .s-in-progress { background: #FEF3C7; color: #B45309; }
+    .s-closed      { background: #DCFCE7; color: #15803D; }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .s-in-progress { background: rgba(217,119,6,0.15); color: #FCD34D; }
+      :root:not([data-theme="light"]) .s-closed      { background: rgba(21,128,61,0.15); color: #4ADE80; }
+    }
+
+    :root[data-theme="dark"] .s-in-progress { background: rgba(217,119,6,0.15); color: #FCD34D; }
+    :root[data-theme="dark"] .s-closed      { background: rgba(21,128,61,0.15); color: #4ADE80; }
+
+    /* ── Custom scrollbar (4px, subtle) ─────────────────── */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) ::-webkit-scrollbar-thumb { background: #374151; }
+    }
+
+    :root[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #374151; }
+
+    /* ── Attribution badge ───────────────────────────────── */
+    .attribution {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--text);
+      color: var(--surface);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      white-space: nowrap;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .attribution a {
+      color: #A78BFA;
+      text-decoration: none;
+    }
+
+    .attribution a:hover { text-decoration: underline; }
+
+    .muted-cell { color: var(--muted); font-size: 12.5px; }
   </style>
 </head>
 <body>
@@ -1157,12 +1222,24 @@
       <div class="page-head">
         <h1 class="page-title">Tickets</h1>
       </div>
-      <div class="orders-card tickets-placeholder">
-        <svg viewBox="0 0 24 24">
-          <path d="M2 9a3 3 0 000 6v2a2 2 0 002 2h16a2 2 0 002-2v-2a3 3 0 000-6V7a2 2 0 00-2-2H4a2 2 0 00-2 2v2z"/>
-          <line x1="14" y1="5" x2="14" y2="19" stroke-dasharray="3 2"/>
-        </svg>
-        <p>Ticket management — coming soon</p>
+      <div class="orders-card">
+        <div class="table-wrap">
+          <table class="orders-table" role="grid">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Ticket ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Created</th>
+              </tr>
+            </thead>
+            <tbody id="ticketsBody"></tbody>
+          </table>
+        </div>
       </div>
     </div><!-- #page-tickets -->
 
@@ -1225,6 +1302,11 @@
 
   <!-- Toast -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Attribution badge -->
+  <div class="attribution">
+    Built with Claude Code · <a href="https://saif-urrehman.com" target="_blank" rel="noopener noreferrer">saif-urrehman.com</a>
+  </div>
 
   <script>
     // ── Orders data (shared across pages) ─────────────────
@@ -1366,7 +1448,8 @@
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       const id = PAGE_MAP[name];
       if (id) document.getElementById(id)?.classList.add('active');
-      if (name === 'Orders') renderFiltered();
+      if (name === 'Orders')  renderFiltered();
+      if (name === 'Tickets') renderTickets();
     }
 
     // ── Sidebar nav ────────────────────────────────────────
@@ -1437,6 +1520,35 @@
     document.getElementById('btnConfirm').addEventListener('click', () => applyStatus('Confirmed'));
     document.getElementById('btnPending').addEventListener('click', () => applyStatus('Pending'));
     document.getElementById('btnCancel').addEventListener('click',  () => applyStatus('Cancelled'));
+
+    // ── Tickets data ───────────────────────────────────────
+    const TICKETS = [
+      { num: 1, id: 'TKT-1021', name: 'James Hargreaves', email: 'james.h@email.com',  subject: 'Order not delivered',         category: 'Support',   catClass: 'cat-support',   status: 'In Progress', statClass: 's-in-progress', created: '12 Sep 2026' },
+      { num: 2, id: 'TKT-1022', name: 'Priya Sharma',     email: 'priya.s@email.com',  subject: 'Wrong item received',         category: 'Bug',       catClass: 'cat-bug',       status: 'In Progress', statClass: 's-in-progress', created: '12 Sep 2026' },
+      { num: 3, id: 'TKT-1023', name: 'Tom Whitfield',    email: 'tom.w@email.com',    subject: 'How do I track my order?',    category: 'Questions', catClass: 'cat-questions', status: 'Closed',      statClass: 's-closed',      created: '11 Sep 2026' },
+      { num: 4, id: 'TKT-1024', name: 'Amara Osei',       email: 'amara.o@email.com',  subject: 'Refund not processed',        category: 'Support',   catClass: 'cat-support',   status: 'Closed',      statClass: 's-closed',      created: '11 Sep 2026' },
+      { num: 5, id: 'TKT-1025', name: 'Carlos Mendez',    email: 'carlos.m@email.com', subject: 'App crashes on checkout',     category: 'Bug',       catClass: 'cat-bug',       status: 'In Progress', statClass: 's-in-progress', created: '10 Sep 2026' },
+      { num: 6, id: 'TKT-1026', name: 'Fatima Al-Hassan', email: 'fatima.a@email.com', subject: 'Can I change delivery slot?', category: 'Questions', catClass: 'cat-questions', status: 'Closed',      statClass: 's-closed',      created: '10 Sep 2026' },
+      { num: 7, id: 'TKT-1027', name: 'Liam Fitzgerald',  email: 'liam.f@email.com',   subject: 'Driver was late by 40 min',  category: 'Support',   catClass: 'cat-support',   status: 'In Progress', statClass: 's-in-progress', created: '9 Sep 2026'  },
+      { num: 8, id: 'TKT-1028', name: 'Sofia Andersson',  email: 'sofia.a@email.com',  subject: 'Payment charged twice',      category: 'Bug',       catClass: 'cat-bug',       status: 'Closed',      statClass: 's-closed',      created: '9 Sep 2026'  }
+    ];
+
+    function renderTickets() {
+      const body = document.getElementById('ticketsBody');
+      if (!body) return;
+      body.innerHTML = TICKETS.map(t => `<tr tabindex="0" aria-label="Ticket ${t.id}">
+        <td><span class="muted-cell">${t.num}</span></td>
+        <td><span class="order-id-cell">${t.id}</span></td>
+        <td>${t.name}</td>
+        <td><span class="muted-cell">${t.email}</span></td>
+        <td>${t.subject}</td>
+        <td><span class="status-badge ${t.catClass}">${t.category}</span></td>
+        <td><span class="status-badge ${t.statClass}">${t.status}</span></td>
+        <td><span class="muted-cell">${t.created}</span></td>
+      </tr>`).join('');
+    }
+
+    renderTickets();
   </script>
 
 </body>
