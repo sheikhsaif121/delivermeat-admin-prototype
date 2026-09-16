@@ -615,6 +615,281 @@
 
     .eta-cell     { color: var(--muted); font-size: 12.5px; }
     .invoice-cell { color: var(--red); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+    /* ── Pages ──────────────────────────────────────────── */
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .page-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .page-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    /* Filter chips */
+    .filter-chips { display: flex; gap: 6px; }
+
+    .chip {
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 130ms ease, color 130ms ease, border-color 130ms ease;
+    }
+
+    .chip:hover { color: var(--text); border-color: var(--text); }
+
+    .chip.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .empty-state {
+      padding: 48px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    /* Tickets placeholder */
+    .tickets-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      gap: 12px;
+    }
+
+    .tickets-placeholder svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--border);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .tickets-placeholder p {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    /* ── Detail panel ────────────────────────────────────── */
+
+    .panel-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 20, 0.45);
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease;
+    }
+
+    .panel-overlay.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .detail-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 480px;
+      max-width: 100vw;
+      background: var(--surface);
+      box-shadow: -4px 0 40px rgba(0, 0, 0, 0.13);
+      z-index: 400;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 260ms cubic-bezier(0.32, 0, 0.15, 1);
+      overflow-y: auto;
+    }
+
+    .detail-panel.open { transform: translateX(0); }
+
+    .panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 24px 24px 20px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .panel-eyebrow {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .panel-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .panel-close {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: var(--bg);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background 130ms ease, color 130ms ease;
+      flex-shrink: 0;
+    }
+
+    .panel-close:hover { background: var(--border); color: var(--text); }
+
+    .panel-close svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .panel-status-row {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .panel-fields { flex: 1; }
+
+    .field-row {
+      display: flex;
+      align-items: baseline;
+      padding: 13px 24px;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .field-row:last-child { border-bottom: none; }
+
+    .field-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      width: 110px;
+      flex-shrink: 0;
+    }
+
+    .field-value {
+      font-size: 13.5px;
+      color: var(--text);
+      font-weight: 500;
+      word-break: break-word;
+      white-space: normal;
+    }
+
+    .panel-footer {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .panel-btn {
+      flex: 1;
+      height: 38px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 130ms ease, color 130ms ease, border-color 130ms ease;
+      color: var(--text);
+    }
+
+    .panel-btn:hover { background: var(--bg); }
+
+    .panel-btn.btn-confirm {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .panel-btn.btn-confirm:hover { background: #cc2920; border-color: #cc2920; }
+
+    .panel-btn.btn-cancel {
+      color: #B91C1C;
+      border-color: #FECACA;
+      background: #FEF2F2;
+    }
+
+    .panel-btn.btn-cancel:hover { background: #FEE2E2; }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .panel-btn.btn-cancel { color: #FCA5A5; border-color: rgba(185,28,28,0.3); background: rgba(185,28,28,0.1); }
+      :root:not([data-theme="light"]) .panel-btn.btn-cancel:hover { background: rgba(185,28,28,0.18); }
+    }
+
+    :root[data-theme="dark"] .panel-btn.btn-cancel { color: #FCA5A5; border-color: rgba(185,28,28,0.3); background: rgba(185,28,28,0.1); }
+    :root[data-theme="dark"] .panel-btn.btn-cancel:hover { background: rgba(185,28,28,0.18); }
+
+    /* ── Toast ───────────────────────────────────────────── */
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-64px);
+      background: var(--text);
+      color: var(--surface);
+      padding: 9px 18px;
+      border-radius: 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 600;
+      opacity: 0;
+      transition: transform 230ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 180ms ease;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -752,6 +1027,8 @@
   <!-- Main content area -->
   <main class="main" id="mainContent">
 
+    <!-- Dashboard page -->
+    <div id="page-dashboard" class="page active">
     <div class="dashboard">
 
       <!-- ① Hero card -->
@@ -840,9 +1117,114 @@
         </div>
       </div>
 
-    </div>
+    </div><!-- /.dashboard -->
+    </div><!-- #page-dashboard -->
+
+    <!-- Orders page -->
+    <div id="page-orders" class="page">
+      <div class="page-head">
+        <h1 class="page-title">Orders</h1>
+        <div class="filter-chips">
+          <button class="chip active" data-filter="All">All</button>
+          <button class="chip" data-filter="Confirmed">Confirmed</button>
+          <button class="chip" data-filter="Pending">Pending</button>
+          <button class="chip" data-filter="Cancelled">Cancelled</button>
+        </div>
+      </div>
+      <div class="orders-card">
+        <div class="table-wrap">
+          <table class="orders-table" role="grid">
+            <thead>
+              <tr>
+                <th>Order Type</th>
+                <th>Order ID</th>
+                <th>Item</th>
+                <th>Customer</th>
+                <th>Delivery Address</th>
+                <th>Status</th>
+                <th>ETA</th>
+                <th>Invoice</th>
+              </tr>
+            </thead>
+            <tbody id="ordersBodyFiltered"></tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- #page-orders -->
+
+    <!-- Tickets page -->
+    <div id="page-tickets" class="page">
+      <div class="page-head">
+        <h1 class="page-title">Tickets</h1>
+      </div>
+      <div class="orders-card tickets-placeholder">
+        <svg viewBox="0 0 24 24">
+          <path d="M2 9a3 3 0 000 6v2a2 2 0 002 2h16a2 2 0 002-2v-2a3 3 0 000-6V7a2 2 0 00-2-2H4a2 2 0 00-2 2v2z"/>
+          <line x1="14" y1="5" x2="14" y2="19" stroke-dasharray="3 2"/>
+        </svg>
+        <p>Ticket management — coming soon</p>
+      </div>
+    </div><!-- #page-tickets -->
 
   </main>
+
+  <!-- Panel overlay -->
+  <div id="panelOverlay" class="panel-overlay" role="presentation"></div>
+
+  <!-- Detail panel -->
+  <aside id="detailPanel" class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+
+    <div class="panel-head">
+      <div>
+        <p class="panel-eyebrow">Order Details</p>
+        <h2 id="panelTitle" class="panel-title">—</h2>
+      </div>
+      <button id="panelClose" class="panel-close" aria-label="Close panel">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="panel-status-row">
+      <span id="panelStatus" class="status-badge"></span>
+    </div>
+
+    <div class="panel-fields">
+      <div class="field-row">
+        <span class="field-label">Customer</span>
+        <span id="panelCustomer" class="field-value"></span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Item</span>
+        <span id="panelItem" class="field-value"></span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Address</span>
+        <span id="panelAddress" class="field-value"></span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">ETA</span>
+        <span id="panelEta" class="field-value"></span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Driver ID</span>
+        <span id="panelDriver" class="field-value"></span>
+      </div>
+      <div class="field-row">
+        <span class="field-label">Amount</span>
+        <span id="panelAmount" class="field-value invoice-cell"></span>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <button class="panel-btn btn-confirm" id="btnConfirm">Confirm</button>
+      <button class="panel-btn" id="btnPending">Set Pending</button>
+      <button class="panel-btn btn-cancel" id="btnCancel">Cancel Order</button>
+    </div>
+
+  </aside>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <script>
     // ── Orders data (shared across pages) ─────────────────
@@ -896,18 +1278,32 @@
       Cancelled: 's-cancelled'
     };
 
-    // ── Render orders table ────────────────────────────────
-    function renderOrdersTable(data) {
-      const body = document.getElementById('ordersBody');
+    // ── State ──────────────────────────────────────────────
+    let activePanelIdx = null;
+    let activeFilter   = 'All';
+
+    // ── Toast ──────────────────────────────────────────────
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
+    }
+
+    // ── Table render (shared) ──────────────────────────────
+    function renderTable(data, tbodyId) {
+      const body = document.getElementById(tbodyId);
       if (!body) return;
-      body.innerHTML = data.map(o => `
-        <tr tabindex="0" aria-label="Order ${o.id}">
-          <td>
-            <div class="type-cell">
-              <span class="type-emoji">${o.type}</span>
-              <span class="type-label">${o.typeLabel}</span>
-            </div>
-          </td>
+      if (!data.length) {
+        body.innerHTML = `<tr><td colspan="8" class="empty-state">No orders match this filter.</td></tr>`;
+        return;
+      }
+      body.innerHTML = data.map(o => {
+        const idx = ORDERS.indexOf(o);
+        return `<tr data-idx="${idx}" tabindex="0" aria-label="Order ${o.id}">
+          <td><div class="type-cell"><span class="type-emoji">${o.type}</span><span class="type-label">${o.typeLabel}</span></div></td>
           <td><span class="order-id-cell">${o.id}</span></td>
           <td>${o.item}</td>
           <td>${o.customer}</td>
@@ -915,13 +1311,29 @@
           <td><span class="status-badge ${STATUS_CLASSES[o.status] || ''}">${o.status}</span></td>
           <td><span class="eta-cell">${o.eta}</span></td>
           <td><span class="invoice-cell">${o.invoice}</span></td>
-        </tr>
-      `).join('');
+        </tr>`;
+      }).join('');
+
+      body.querySelectorAll('tr[data-idx]').forEach(row => {
+        const open = () => openPanel(parseInt(row.dataset.idx));
+        row.addEventListener('click', open);
+        row.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+        });
+      });
     }
 
-    renderOrdersTable(ORDERS);
+    function renderDashboard() { renderTable(ORDERS, 'ordersBody'); }
 
-    // ── Orders tabs ────────────────────────────────────────
+    function renderFiltered() {
+      const data = activeFilter === 'All' ? ORDERS : ORDERS.filter(o => o.status === activeFilter);
+      renderTable(data, 'ordersBodyFiltered');
+    }
+
+    renderDashboard();
+    renderFiltered();
+
+    // ── Dashboard tabs ─────────────────────────────────────
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tab-btn').forEach(t => {
@@ -933,18 +1345,98 @@
       });
     });
 
+    // ── Filter chips ───────────────────────────────────────
+    document.querySelectorAll('.chip[data-filter]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.chip[data-filter]').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeFilter = chip.dataset.filter;
+        renderFiltered();
+      });
+    });
+
+    // ── Page routing ───────────────────────────────────────
+    const PAGE_MAP = {
+      Dashboard: 'page-dashboard',
+      Orders:    'page-orders',
+      Tickets:   'page-tickets'
+    };
+
+    function showPage(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const id = PAGE_MAP[name];
+      if (id) document.getElementById(id)?.classList.add('active');
+      if (name === 'Orders') renderFiltered();
+    }
+
     // ── Sidebar nav ────────────────────────────────────────
     const navItems = document.querySelectorAll('#sidebarNav .nav-item');
     navItems.forEach(item => {
       item.addEventListener('click', () => {
-        navItems.forEach(n => {
-          n.classList.remove('active');
-          n.removeAttribute('aria-current');
-        });
+        const label = item.dataset.label;
+        navItems.forEach(n => { n.classList.remove('active'); n.removeAttribute('aria-current'); });
         item.classList.add('active');
         item.setAttribute('aria-current', 'page');
+        if (PAGE_MAP[label]) {
+          showPage(label);
+        } else {
+          showToast(`${label} — coming soon`);
+        }
       });
     });
+
+    // ── Detail panel ───────────────────────────────────────
+    const overlay    = document.getElementById('panelOverlay');
+    const panel      = document.getElementById('detailPanel');
+    const panelClose = document.getElementById('panelClose');
+
+    function syncPanelBadge(status) {
+      const badge = document.getElementById('panelStatus');
+      badge.className = `status-badge ${STATUS_CLASSES[status] || ''}`;
+      badge.textContent = status;
+    }
+
+    function openPanel(idx) {
+      activePanelIdx = idx;
+      const o = ORDERS[idx];
+      document.getElementById('panelTitle').textContent    = o.id;
+      document.getElementById('panelCustomer').textContent = o.customer;
+      document.getElementById('panelItem').textContent     = o.item;
+      document.getElementById('panelAddress').textContent  = o.address;
+      document.getElementById('panelEta').textContent      = o.eta;
+      document.getElementById('panelDriver').textContent   = 'DRV-' + String(3000 + idx).padStart(4, '0');
+      document.getElementById('panelAmount').textContent   = o.invoice;
+      syncPanelBadge(o.status);
+      overlay.classList.add('visible');
+      panel.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      panelClose.focus();
+    }
+
+    function closePanel() {
+      overlay.classList.remove('visible');
+      panel.classList.remove('open');
+      document.body.style.overflow = '';
+      activePanelIdx = null;
+    }
+
+    overlay.addEventListener('click', closePanel);
+    panelClose.addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && activePanelIdx !== null) closePanel(); });
+
+    // ── Status action buttons ──────────────────────────────
+    function applyStatus(newStatus) {
+      if (activePanelIdx === null) return;
+      ORDERS[activePanelIdx].status = newStatus;
+      syncPanelBadge(newStatus);
+      renderDashboard();
+      renderFiltered();
+      showToast(`Order ${ORDERS[activePanelIdx].id} → ${newStatus}`);
+    }
+
+    document.getElementById('btnConfirm').addEventListener('click', () => applyStatus('Confirmed'));
+    document.getElementById('btnPending').addEventListener('click', () => applyStatus('Pending'));
+    document.getElementById('btnCancel').addEventListener('click',  () => applyStatus('Cancelled'));
   </script>
 
 </body>
