@@ -1386,6 +1386,123 @@
     }
 
     .send-btn:hover { background: #cc2920; }
+
+    /* ── Partners page ──────────────────────────────────── */
+    .page-head-btn {
+      height: 36px;
+      padding: 0 16px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 150ms ease;
+      white-space: nowrap;
+    }
+
+    .page-head-btn:hover { background: #cc2920; }
+
+    .partner-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .partner-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .partner-search-row {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .partner-search-wrap {
+      position: relative;
+      max-width: 300px;
+    }
+
+    .partner-search-wrap .search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pointer-events: none;
+    }
+
+    .partner-search-input {
+      width: 100%;
+      height: 34px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0 12px 0 32px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+      appearance: none;
+    }
+
+    .partner-search-input::placeholder { color: var(--muted); }
+
+    .partner-search-input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(230, 48, 39, 0.09);
+    }
+
+    .partner-search-input::-webkit-search-cancel-button { display: none; }
+
+    .p-active    { background: #DCFCE7; color: #15803D; }
+    .p-pending   { background: #FEF3C7; color: #B45309; }
+    .p-suspended { background: #FEE2E2; color: #B91C1C; }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .p-active    { background: rgba(21,128,61,0.15);   color: #4ADE80; }
+      :root:not([data-theme="light"]) .p-pending   { background: rgba(217,119,6,0.15);   color: #FCD34D; }
+      :root:not([data-theme="light"]) .p-suspended { background: rgba(185,28,28,0.15);   color: #FCA5A5; }
+    }
+
+    :root[data-theme="dark"] .p-active    { background: rgba(21,128,61,0.15);   color: #4ADE80; }
+    :root[data-theme="dark"] .p-pending   { background: rgba(217,119,6,0.15);   color: #FCD34D; }
+    :root[data-theme="dark"] .p-suspended { background: rgba(185,28,28,0.15);   color: #FCA5A5; }
+
+    .action-btn {
+      height: 28px;
+      padding: 0 12px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .action-btn:hover { background: var(--bg); }
+
+    .action-btn.approve {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .action-btn.approve:hover { background: #cc2920; border-color: #cc2920; }
   </style>
 </head>
 <body>
@@ -1742,6 +1859,79 @@
       </div>
     </div><!-- #page-messages -->
 
+    <!-- Partners page -->
+    <div id="page-partners" class="page">
+      <div class="page-head">
+        <h1 class="page-title">Partner Stores</h1>
+        <button class="page-head-btn" onclick="showToast('Add Partner — coming soon')">+ Add Partner</button>
+      </div>
+      <div class="partner-stats">
+        <div class="kpi-card">
+          <div class="kpi-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
+          </div>
+          <p class="kpi-label">Total Partners</p>
+          <p class="kpi-value">54</p>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#DCFCE7;color:#15803D">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <p class="kpi-label">Active</p>
+          <p class="kpi-value">48</p>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#FEF3C7;color:#B45309">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <p class="kpi-label">Pending Approval</p>
+          <p class="kpi-value">4</p>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#FEE2E2;color:#B91C1C">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          </div>
+          <p class="kpi-label">Suspended</p>
+          <p class="kpi-value">2</p>
+        </div>
+      </div>
+      <div class="orders-card">
+        <div class="partner-search-row">
+          <div class="partner-search-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <input
+              id="partnerSearch"
+              class="partner-search-input"
+              type="search"
+              placeholder="Search store, owner or city…"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Search partners"
+            >
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="orders-table" role="grid">
+            <thead>
+              <tr>
+                <th>Store Name</th>
+                <th>Owner</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Joined</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="partnersBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- #page-partners -->
+
   </main>
 
   <!-- Panel overlay -->
@@ -1941,15 +2131,17 @@
       Dashboard: 'page-dashboard',
       Orders:    'page-orders',
       Tickets:   'page-tickets',
-      Messages:  'page-messages'
+      Messages:  'page-messages',
+      Partners:  'page-partners'
     };
 
     function showPage(name) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       const id = PAGE_MAP[name];
       if (id) document.getElementById(id)?.classList.add('active');
-      if (name === 'Orders')  renderFiltered();
-      if (name === 'Tickets') renderTickets();
+      if (name === 'Orders')   renderFiltered();
+      if (name === 'Tickets')  renderTickets();
+      if (name === 'Partners') renderPartners();
     }
 
     // ── Sidebar nav ────────────────────────────────────────
@@ -2049,6 +2241,82 @@
     }
 
     renderTickets();
+
+    // ── Partners data ─────────────────────────────────────
+    const PARTNERS = [
+      { id: 'P001', store: 'Burger Palace',     owner: 'Mohammed Khalid', category: 'Fast Food',     location: 'London',     status: 'Active',    joined: 'Jan 2025' },
+      { id: 'P002', store: 'The Spice Garden',  owner: 'Amita Patel',     category: 'Asian',         location: 'Birmingham', status: 'Active',    joined: 'Feb 2025' },
+      { id: 'P003', store: 'Med Kitchen',       owner: 'Giorgos Stavros', category: 'Mediterranean', location: 'Manchester', status: 'Pending',   joined: 'Sep 2026' },
+      { id: 'P004', store: 'FreshMart Express', owner: 'Sandra Webb',     category: 'Grocery',       location: 'London',     status: 'Active',    joined: 'Mar 2025' },
+      { id: 'P005', store: 'Sushi Roku',        owner: 'Yuki Tanaka',     category: 'Asian',         location: 'London',     status: 'Active',    joined: 'Apr 2025' },
+      { id: 'P006', store: 'The Kebab House',   owner: 'Ercan Demir',     category: 'Mediterranean', location: 'Birmingham', status: 'Suspended', joined: 'Jun 2025' },
+      { id: 'P007', store: 'Corner Grocery',    owner: 'Paul Adeyemi',    category: 'Grocery',       location: 'Manchester', status: 'Pending',   joined: 'Sep 2026' },
+      { id: 'P008', store: 'Noodle Nation',     owner: 'Chen Wei',        category: 'Asian',         location: 'London',     status: 'Active',    joined: 'Jul 2025' }
+    ];
+
+    const PARTNER_STATUS_CLASSES = {
+      Active:    'p-active',
+      Pending:   'p-pending',
+      Suspended: 'p-suspended'
+    };
+
+    let partnerQuery = '';
+
+    function renderPartners() {
+      const body = document.getElementById('partnersBody');
+      if (!body) return;
+      const q = partnerQuery.toLowerCase();
+      const data = q
+        ? PARTNERS.filter(p =>
+            p.store.toLowerCase().includes(q) ||
+            p.owner.toLowerCase().includes(q) ||
+            p.location.toLowerCase().includes(q))
+        : PARTNERS;
+      if (!data.length) {
+        body.innerHTML = `<tr><td colspan="7" class="empty-state">No partners match your search.</td></tr>`;
+        return;
+      }
+      body.innerHTML = data.map(p => {
+        const sc = PARTNER_STATUS_CLASSES[p.status] || '';
+        const actionBtn = p.status === 'Pending'
+          ? `<button class="action-btn approve" data-pid="${p.id}">Approve</button>`
+          : `<button class="action-btn" data-pid="${p.id}">View</button>`;
+        return `<tr tabindex="0" aria-label="${p.store}">
+          <td style="font-weight:600">${p.store}</td>
+          <td>${p.owner}</td>
+          <td><span class="muted-cell">${p.category}</span></td>
+          <td><span class="muted-cell">${p.location}</span></td>
+          <td><span class="status-badge ${sc}">${p.status}</span></td>
+          <td><span class="muted-cell">${p.joined}</span></td>
+          <td>${actionBtn}</td>
+        </tr>`;
+      }).join('');
+
+      body.querySelectorAll('.action-btn.approve').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          const partner = PARTNERS.find(p => p.id === btn.dataset.pid);
+          if (!partner) return;
+          partner.status = 'Active';
+          renderPartners();
+          showToast(`${partner.store} approved`);
+        });
+      });
+
+      body.querySelectorAll('.action-btn:not(.approve)').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          const partner = PARTNERS.find(p => p.id === btn.dataset.pid);
+          if (!partner) return;
+          showToast(`${partner.store} · ${partner.location}`);
+        });
+      });
+    }
+
+    document.getElementById('partnerSearch')?.addEventListener('input', e => {
+      partnerQuery = e.target.value;
+      renderPartners();
+    });
 
     // ── Messages data ──────────────────────────────────────
     const THREADS = [
