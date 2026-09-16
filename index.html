@@ -961,9 +961,14 @@
     #page-messages {
       margin: -32px;
       height: calc(100dvh - var(--nav-h));
-      display: flex;
       flex-direction: column;
       overflow: hidden;
+    }
+
+    /* Only apply display:flex when the page is active — avoids
+       overriding .page { display:none } via ID specificity */
+    #page-messages.active {
+      display: flex;
     }
 
     .msg-layout {
