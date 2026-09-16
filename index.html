@@ -351,6 +351,270 @@
       outline: 2px solid var(--red);
       outline-offset: 1px;
     }
+
+    /* ── Dashboard ──────────────────────────────────── */
+
+    .dashboard {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Hero card */
+    .hero-card {
+      background: var(--red);
+      border-radius: 16px;
+      padding: 32px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 10px;
+    }
+
+    .hero-value {
+      font-size: 44px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.025em;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 8px;
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .hero-rocket {
+      width: 76px;
+      height: 76px;
+      background: rgba(255,255,255,0.13);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    /* KPI grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 1100px) {
+      .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .kpi-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--red-soft);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red);
+      flex-shrink: 0;
+      margin-bottom: 14px;
+    }
+
+    .kpi-icon svg {
+      width: 17px;
+      height: 17px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .kpi-label {
+      font-size: 11.5px;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .kpi-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+      margin-top: 3px;
+    }
+
+    .kpi-trend {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #16A34A;
+      margin-top: 6px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .kpi-trend { color: #4ADE80; }
+    }
+
+    :root[data-theme="dark"] .kpi-trend { color: #4ADE80; }
+
+    /* Orders card */
+    .orders-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .orders-tabs {
+      display: flex;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      padding: 15px 0;
+      margin-right: 24px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 130ms ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+
+    .tab-btn.active {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .orders-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .orders-table thead th {
+      padding: 11px 16px;
+      text-align: left;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .orders-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 110ms ease;
+    }
+
+    .orders-table tbody tr:last-child { border-bottom: none; }
+    .orders-table tbody tr:hover { background: var(--bg); }
+
+    .orders-table td {
+      padding: 13px 16px;
+      font-size: 13px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .type-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .type-emoji { font-size: 18px; line-height: 1; }
+
+    .type-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .order-id-cell {
+      font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+
+    .status-badge::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    .s-confirmed { background: #DCFCE7; color: #15803D; }
+    .s-pending   { background: #FEF9C3; color: #B45309; }
+    .s-cancelled { background: #F3F4F6; color: #6B7280; }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .s-confirmed { background: rgba(21,128,61,0.15);   color: #4ADE80; }
+      :root:not([data-theme="light"]) .s-pending   { background: rgba(217,119,6,0.15);   color: #FCD34D; }
+      :root:not([data-theme="light"]) .s-cancelled { background: rgba(107,114,128,0.15); color: #9CA3AF; }
+    }
+
+    :root[data-theme="dark"] .s-confirmed { background: rgba(21,128,61,0.15);   color: #4ADE80; }
+    :root[data-theme="dark"] .s-pending   { background: rgba(217,119,6,0.15);   color: #FCD34D; }
+    :root[data-theme="dark"] .s-cancelled { background: rgba(107,114,128,0.15); color: #9CA3AF; }
+
+    .eta-cell     { color: var(--muted); font-size: 12.5px; }
+    .invoice-cell { color: var(--red); font-weight: 600; font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body>
@@ -487,12 +751,190 @@
 
   <!-- Main content area -->
   <main class="main" id="mainContent">
-    <!-- content panels go here -->
+
+    <div class="dashboard">
+
+      <!-- ① Hero card -->
+      <div class="hero-card">
+        <div>
+          <p class="hero-eyebrow">Total Revenue Today</p>
+          <p class="hero-value">£1,250.00</p>
+          <p class="hero-sub">42 Orders processed today</p>
+        </div>
+        <div class="hero-rocket" aria-hidden="true">🚀</div>
+      </div>
+
+      <!-- ② KPI row -->
+      <div class="kpi-grid">
+
+        <div class="kpi-card">
+          <div class="kpi-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          </div>
+          <p class="kpi-label">Revenue</p>
+          <p class="kpi-value">£1,250</p>
+          <p class="kpi-trend">▲ 55% vs yesterday</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+          </div>
+          <p class="kpi-label">New Users</p>
+          <p class="kpi-value">59</p>
+          <p class="kpi-trend">▲ 35% vs yesterday</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+          </div>
+          <p class="kpi-label">Total Orders</p>
+          <p class="kpi-value">59</p>
+          <p class="kpi-trend">▲ 55% vs yesterday</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>
+          </div>
+          <p class="kpi-label">Partner Stores</p>
+          <p class="kpi-value">54</p>
+          <p class="kpi-trend">▲ 56% vs yesterday</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <p class="kpi-label">New Drivers</p>
+          <p class="kpi-value">32</p>
+          <p class="kpi-trend">▲ 55% vs yesterday</p>
+        </div>
+
+      </div>
+
+      <!-- ③ Real-time orders -->
+      <div class="orders-card">
+        <div class="orders-tabs">
+          <button class="tab-btn active" aria-selected="true">Real Time Orders</button>
+          <button class="tab-btn" aria-selected="false">Order History</button>
+          <button class="tab-btn" aria-selected="false">Scheduled</button>
+        </div>
+        <div class="table-wrap">
+          <table class="orders-table" role="grid">
+            <thead>
+              <tr>
+                <th>Order Type</th>
+                <th>Order ID</th>
+                <th>Item</th>
+                <th>Customer</th>
+                <th>Delivery Address</th>
+                <th>Status</th>
+                <th>ETA</th>
+                <th>Invoice</th>
+              </tr>
+            </thead>
+            <tbody id="ordersBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
   </main>
 
   <script>
-    const navItems = document.querySelectorAll('#sidebarNav .nav-item');
+    // ── Orders data (shared across pages) ─────────────────
+    const ORDERS = [
+      {
+        type: '🍔', typeLabel: 'Burger',
+        id: 'ORD-7841',
+        item: 'Double Smash Burger + Fries',
+        customer: 'James Hargreaves',
+        address: '22 Deansgate, Manchester M3 4EN',
+        status: 'Confirmed',
+        eta: '8 min',
+        invoice: '£14.50'
+      },
+      {
+        type: '🍕', typeLabel: 'Pizza',
+        id: 'ORD-7842',
+        item: 'Margherita XL + Garlic Bread',
+        customer: 'Priya Sharma',
+        address: '7 Northern Quarter, Manchester M4 1HF',
+        status: 'Pending',
+        eta: '22 min',
+        invoice: '£18.90'
+      },
+      {
+        type: '🥗', typeLabel: 'Salad',
+        id: 'ORD-7843',
+        item: 'Grilled Halloumi Salad',
+        customer: 'Tom Whitfield',
+        address: '104 Oxford Road, Manchester M1 5BN',
+        status: 'Confirmed',
+        eta: '14 min',
+        invoice: '£11.20'
+      },
+      {
+        type: '🌮', typeLabel: 'Mexican',
+        id: 'ORD-7844',
+        item: 'Beef Tacos x3 + Nachos',
+        customer: 'Amara Osei',
+        address: '31 Piccadilly, Manchester M1 1HB',
+        status: 'Cancelled',
+        eta: '—',
+        invoice: '£16.75'
+      }
+    ];
 
+    // ── Status class map ───────────────────────────────────
+    const STATUS_CLASSES = {
+      Confirmed: 's-confirmed',
+      Pending:   's-pending',
+      Cancelled: 's-cancelled'
+    };
+
+    // ── Render orders table ────────────────────────────────
+    function renderOrdersTable(data) {
+      const body = document.getElementById('ordersBody');
+      if (!body) return;
+      body.innerHTML = data.map(o => `
+        <tr tabindex="0" aria-label="Order ${o.id}">
+          <td>
+            <div class="type-cell">
+              <span class="type-emoji">${o.type}</span>
+              <span class="type-label">${o.typeLabel}</span>
+            </div>
+          </td>
+          <td><span class="order-id-cell">${o.id}</span></td>
+          <td>${o.item}</td>
+          <td>${o.customer}</td>
+          <td>${o.address}</td>
+          <td><span class="status-badge ${STATUS_CLASSES[o.status] || ''}">${o.status}</span></td>
+          <td><span class="eta-cell">${o.eta}</span></td>
+          <td><span class="invoice-cell">${o.invoice}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    renderOrdersTable(ORDERS);
+
+    // ── Orders tabs ────────────────────────────────────────
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+      });
+    });
+
+    // ── Sidebar nav ────────────────────────────────────────
+    const navItems = document.querySelectorAll('#sidebarNav .nav-item');
     navItems.forEach(item => {
       item.addEventListener('click', () => {
         navItems.forEach(n => {
